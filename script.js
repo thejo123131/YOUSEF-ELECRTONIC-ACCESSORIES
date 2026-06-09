@@ -5,21 +5,21 @@ const products = [
 {
 id:1,
 name:"Joyroom Car Charger USB + Type-C",
-price:150,
+price:350,
 image:"1.jpg",
 category:"Chargers"
 },
 {
 id:2,
 name:"Joyroom Mini Car Charger",
-price:180,
+price:250,
 image:"2.jpg",
 category:"Chargers"
 },
 {
 id:3,
 name:"Oraimo Car Charger",
-price:220,
+price:300,
 image:"3.jpg",
 category:"Chargers"
 },
@@ -34,49 +34,49 @@ category:"Holders"
 id:5,
 name:"Metal Desktop Phone Stand",
 price:120,
-image:"5.jpg",
+image:"15.jpg",
 category:"Holders"
 },
 {
 id:6,
 name:"Flexible Mobile Holder",
-price:170,
+price:150,
 image:"6.jpg",
 category:"Holders"
 },
 {
 id:7,
 name:"Joyroom Fast Car Charger",
-price:200,
+price:220,
 image:"7.jpg",
 category:"Chargers"
 },
 {
 id:8,
-name:"Power Bank",
-price:450,
+name:"joyroom Power Bank",
+price:500,
 image:"8.jpg",
 category:"Power Banks"
 },
 {
 id:9,
-name:"Power Bank 10000mAh",
-price:500,
+name:"wiwu Power Bank 10000mAh",
+price:350,
 image:"9.jpg",
 category:"Power Banks"
 },
 {
 id:10,
-name:"HIKSEMI Flash Drive",
-price:150,
-image:"10.jpg",
+name:"HIKSEMI Flash Drive 32GB",
+price:360,
+image:"21.jpg",
 category:"Flash Drives"
 },
 {
 id:11,
 name:"Kingston Flash 64GB",
-price:250,
-image:"11.jpg",
+price:350,
+image:"13.jpg",
 category:"Flash Drives"
 },
 {
@@ -89,28 +89,28 @@ category:"Flash Drives"
 {
 id:13,
 name:"HIKSEMI Flash 16GB",
-price:170,
-image:"13.jpg",
+price:230,
+image:"11.jpg",
 category:"Flash Drives"
 },
 {
 id:14,
-name:"Power Bank 10000mAh",
+name:"joyroom Power Bank 10000mAh",
 price:450,
 image:"14.jpg",
 category:"Power Banks"
 },
 {
 id:15,
-name:"Choetech 22.5W Power Bank",
-price:650,
+name:"wiwu Power Bank",
+price:370,
 image:"15.jpg",
 category:"Power Banks"
 },
 {
 id:16,
-name:"Power Bank 10000mAh Digital",
-price:550,
+name:"Choetech Power Bank 10000mAh",
+price:674,
 image:"16.jpg",
 category:"Power Banks"
 },
@@ -178,7 +178,6 @@ image:"25.jpg",
 category:"Cables"
 }
 ];
-
 /* عرض المنتجات */
 
 function displayProducts(list = products){
@@ -192,18 +191,10 @@ list.forEach(product=>{
 
 container.innerHTML += `
 
-<div class="product-card">
-
-<img src="${product.image}"
+<div class="product-card"><img src="${product.image}"
 alt="${product.name}">
 
-<h3>${product.name}</h3>
-
-<p>${product.price} EGP</p>
-
-<div class="product-buttons">
-
-<button
+<h3>${product.name}</h3><p>${product.price + 50} EGP</p><div class="product-buttons"><button
 class="order-btn"
 onclick="orderNow(${product.id})">
 Order Now
@@ -215,11 +206,7 @@ onclick="addToCart(${product.id})">
 Add To Cart
 </button>
 
-</div>
-
-</div>
-
-`;
+</div></div>`;
 
 });
 
@@ -327,37 +314,25 @@ cartItems.innerHTML = "";
 cart.forEach(item=>{
 
 total +=
-item.price * item.quantity;
+(item.price + 50) * item.quantity;
 
 count += item.quantity;
 
 cartItems.innerHTML += `
 
-<div class="cart-item">
+<div class="cart-item"><strong>${item.name}</strong>
 
-<strong>${item.name}</strong>
-
-<p>${item.price} EGP</p>
-
-<div class="qty-controls">
-
-<button
+<p>${item.price + 50} EGP</p><div class="qty-controls"><button
 onclick="decreaseQuantity(${item.id})">
--
-</button>
 
-<span>${item.quantity}</span>
+</button><span>${item.quantity}</span>
 
 <button
 onclick="increaseQuantity(${item.id})">
 +
 </button>
 
-</div>
-
-</div>
-
-`;
+</div></div>`;
 
 });
 
@@ -365,7 +340,6 @@ cartCount.innerText = count;
 cartTotal.innerText = total;
 
 }
-
 /* شراء مباشر */
 
 function orderNow(id){
@@ -448,27 +422,15 @@ document.body.classList.remove(
 );
 
 if(theme==="white"){
-
-document.body.classList.add(
-"white-theme"
-);
-
+document.body.classList.add("white-theme");
 }
 
 if(theme==="black"){
-
-document.body.classList.add(
-"black-theme"
-);
-
+document.body.classList.add("black-theme");
 }
 
 if(theme==="rgb"){
-
-document.body.classList.add(
-"rgb-theme"
-);
-
+document.body.classList.add("rgb-theme");
 }
 
 }
@@ -477,44 +439,54 @@ document.body.classList.add(
 
 function sendOrder(){
 
-    const name =
-    document.getElementById("customerName").value;
+const name =
+document.getElementById("customerName").value;
 
-    const phone =
-    document.getElementById("customerPhone").value;
+const phone =
+document.getElementById("customerPhone").value;
 
-    const address =
-    document.getElementById("customerAddress").value;
+const address =
+document.getElementById("customerAddress").value;
 
-    const payment =
-    document.getElementById("paymentMethod").value;
+const payment =
+document.getElementById("paymentMethod").value;
 
-    if(
-        !name ||
-        !phone ||
-        !address
-    ){
-        alert("Please fill all fields");
-        return;
-    }
+if(
+!name ||
+!phone ||
+!address
+){
+alert("Please fill all fields");
+return;
+}
 
-    let orderDetails = "";
+let orderDetails = "";
 
-    cart.forEach(item => {
+cart.forEach(item => {
 
-        orderDetails +=
-        `${item.name} x${item.quantity}\n`;
+orderDetails +=
+"${item.name} x${item.quantity} = ${((item.price + 50) * item.quantity)} EGP\n";
 
-    });
+});
 
-    const total =
-    cart.reduce(
-        (sum,item)=>
-        sum + (item.price * item.quantity),
-        0
-    );
+const productsTotal =
+cart.reduce(
+(sum,item)=>
+sum + ((item.price + 50) * item.quantity),
+0
+);
 
-    const message =
+const delivery = 70;
+
+const cashFee =
+payment === "Cash" ? 12 : 0;
+
+const total =
+productsTotal +
+delivery +
+cashFee;
+
+const message =
 
 `🛒 New Order
 
@@ -529,19 +501,42 @@ Payment Method: ${payment}
 Products:
 ${orderDetails}
 
-Total: ${total} EGP`;
+Products Total: ${productsTotal} EGP
 
-    const whatsappURL =
+Delivery: ${delivery} EGP
 
-`https://wa.me/201013693032?text=${encodeURIComponent(message)}`;
+Cash Fee: ${cashFee} EGP
 
-    alert(
-    "✅ Order confirmed!\n📦 Shipping in 3 days."
-    );
+Final Total: ${total} EGP`;
 
-    window.open(
-        whatsappURL,
-        "_blank"
-    );
+const whatsappURL =
+"https://wa.me/201013693032?text=${encodeURIComponent(message)}";
+
+alert(
+`✅ Order Confirmed
+
+Products: ${productsTotal} EGP
+
+Delivery: ${delivery} EGP
+
+Cash Fee: ${cashFee} EGP
+
+Final Total: ${total} EGP
+
+📦 Shipping in 3 days`
+);
+
+window.open(
+whatsappURL,
+"_blank"
+);
 
 }
+
+/* عرض المنتجات عند فتح الموقع */
+
+window.onload = function(){
+
+displayProducts(products);
+
+};
