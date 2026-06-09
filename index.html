@@ -4,13 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Y Electronic Accessories</title>
-
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- Theme Buttons -->
 <div class="theme-box">
     <h2>Choose Theme</h2>
 
@@ -21,7 +19,6 @@
     </div>
 </div>
 
-<!-- Header -->
 <header>
 
     <h1>Y Electronic Accessories</h1>
@@ -68,21 +65,18 @@
 
 </header>
 
-<!-- Store Title -->
 <section class="hero">
 
     <h2>Best Electronic Accessories</h2>
 
     <p>
-        Chargers - Cables - Power Banks - Flash Drives
+        Chargers • Cables • Power Banks • Flash Drives
     </p>
 
 </section>
 
-<!-- Products -->
 <div id="products" class="products-grid"></div>
 
-<!-- Cart -->
 <div id="cart-sidebar" class="cart-sidebar">
 
     <h2>Shopping Cart</h2>
@@ -95,13 +89,14 @@
         EGP
     </h3>
 
-    <button onclick="showOrderForm()" class="checkout-btn">
+    <button
+        class="checkout-btn"
+        onclick="showOrderForm()">
         Checkout
     </button>
 
 </div>
 
-<!-- Order Form -->
 <div id="orderModal" class="modal">
 
     <div class="modal-content">
@@ -111,25 +106,27 @@
         <input
             type="text"
             id="customerName"
-            placeholder="Full Name"
-        >
+            placeholder="Full Name">
 
         <input
             type="text"
             id="customerPhone"
-            placeholder="Phone Number"
-        >
+            placeholder="Phone Number">
+
+        <input
+            type="email"
+            id="customerEmail"
+            placeholder="Email Address">
 
         <input
             type="text"
             id="customerAddress"
-            placeholder="Address"
-        >
+            placeholder="Address">
 
         <select
             id="paymentMethod"
-            onchange="togglePaymentNote()"
-        >
+            onchange="togglePaymentNote()">
+
             <option value="Cash On Delivery">
                 Cash On Delivery
             </option>
@@ -141,32 +138,32 @@
             <option value="Vodafone Cash">
                 Vodafone Cash
             </option>
+
         </select>
 
-        <!-- Payment Note -->
         <div
             id="payment-note"
-            style="display:none;"
-        >
+            style="display:none;">
+
             <p>
-                If you are paying using Vodafone Cash
-                or Instapay, please send a screenshot
-                of the payment as proof of payment.
-                Thank you.
+                If you pay using Instapay or Vodafone Cash,
+                please send a payment screenshot.
             </p>
+
         </div>
 
         <p>Instapay : 01016919737</p>
         <p>Vodafone Cash : 01013693032</p>
 
-        <p>Delivery : 50 EGP</p>
-        <p>Cash On Delivery : +15 EGP</p>
+        <p>Delivery : 70 EGP</p>
+        <p>Cash On Delivery Fee : +12 EGP</p>
 
         <button
             class="confirm-btn"
-            onclick="sendOrder()"
-        >
+            onclick="sendOrder()">
+
             Confirm Order
+
         </button>
 
     </div>
