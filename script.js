@@ -499,7 +499,30 @@ Address: ${address}
 Payment Method: ${payment}
 
 Products:
-${orderDetails}
+${orderDetails}`;
+
+const productsTotal =
+cart.reduce(
+(sum,item)=>
+sum + ((item.price + 50) * item.quantity),
+0
+);
+
+const delivery = 70;
+
+const cashFee =
+payment === "Cash" ? 12 : 0;
+
+const total =
+productsTotal +
+delivery +
+cashFee;
+
+const finalMessage =
+
+message +
+
+`
 
 Products Total: ${productsTotal} EGP
 
@@ -510,21 +533,7 @@ Cash Fee: ${cashFee} EGP
 Final Total: ${total} EGP`;
 
 const whatsappURL =
-"https://wa.me/201013693032?text=${encodeURIComponent(message)}";
-
-alert(
-`✅ Order Confirmed
-
-Products: ${productsTotal} EGP
-
-Delivery: ${delivery} EGP
-
-Cash Fee: ${cashFee} EGP
-
-Final Total: ${total} EGP
-
-📦 Shipping in 3 days`
-);
+"https://wa.me/201013693032?text=${encodeURIComponent(finalMessage)}";
 
 window.open(
 whatsappURL,
